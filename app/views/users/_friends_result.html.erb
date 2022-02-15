@@ -2,11 +2,21 @@
     <%= render 'layouts/messages' %>
 </div>
 
-<% if @user %>
+<% if @users %>
     <div class="card card-header results-block">
-        <strong>Symbol: </strong><%= @user %>
-        <strong>Name: </strong><%= @user %>
-        <strong>Price: </strong><%= @user %>
-        <%= link_to 'Follow friend', '#', class: "btn btn-xs btn-success", method: :post %>
+        <table class="col-md-12">
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td><strong>Name: </strong><%= user.full_name %></td>
+                        <td><strong>Email: </strong><%= user.email %></td>
+                        <td><strong>Actions: </strong>
+                            <%= link_to "View Profile", "#", class: "btn btn-sm btn-success"  %>
+                            <%= link_to 'Follow friend', '#', class: "btn btn-sm btn-success", method: :post %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
     </div>
 <% end %>
